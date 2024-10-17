@@ -12,7 +12,7 @@ Next Steps (Part 2)
 
 Installation
 - Clone the repo:
-git clone https://github.com/your-repo/todo-app-feature-flag.git
+`git clone git@github.com:JesseHouldsworth/LD.git`
 - Add your LaunchDarkly client-side ID in app.js
 - Open index.html in your browser of choice
 
