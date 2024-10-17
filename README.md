@@ -13,8 +13,8 @@ Next Steps (Part 2)
 Installation
 - Clone the repo:
 `git clone git@github.com:JesseHouldsworth/LD.git`
-- Add your LaunchDarkly client-side ID in app.js
-- Open index.html in your browser of choice
+- Add your LaunchDarkly client-side ID in `app.js`
+- Open `index.html` in your browser of choice
 
 Toggling dark mode on/off
 - Option 1 - Use LaunchDarkly to toggle dark mode on/off via the web UI
@@ -23,6 +23,6 @@ Toggling dark mode on/off
     - Disable dark mode: `curl -X POST https://app.launchdarkly.com/webhook/triggers/671179073ee450085d7b7477/7abf7a6f-c87f-4db5-92d5-69442da13d8d`
 
 Files
-- index.html: Basic structure and dark mode toggle button.
-- style.css: Basic styles for the app.
-- app.js: Handles Todo functionality and LaunchDarkly integration.
+- `index.html`: Basic structure and dark mode toggle button.
+- `style.css`: Basic styles for the app.
+- `app.js`: Handles Todo functionality and LaunchDarkly integration.
