@@ -1,3 +1,21 @@
+// Begin LaunchDarkly code
+// Define user attributes
+const context = {
+  kind: 'user',
+  key: 'test-user',
+  name: 'Test User'
+};
+
+// Initialize LaunchDarkly client - REPLACE WITH CLIENT SIDE ID
+const ldClient = LDClient.initialize('YOUR_CLIENT_SIDE_ID', context);
+
+// Setup event listener - should result in success message sent to browser console
+ldClient.on('ready', () => {
+  console.log("LaunchDarkly client is ready");
+
+});
+// End LaunchDarkly code
+
 // Select elements from the DOM
 const newTodoInput = document.getElementById('newTodo');
 const addTodoBtn = document.getElementById('addTodoBtn');
@@ -60,7 +78,7 @@ function toggleComplete(index) {
 addTodoBtn.addEventListener('click', addTodo);
 
 // Event listener for the Enter key to add a todo
-newTodoInput.addEventListener('keypress', function(event) {
+newTodoInput.addEventListener('keypress', function (event) {
   if (event.key === 'Enter') {
     addTodo();
   }
