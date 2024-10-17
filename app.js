@@ -2,7 +2,7 @@
 // Define user attributes
 const context = {
   kind: 'user',
-  key: 'test-user',
+  key: 'test-user',  // Use a simple context key for testing
   name: 'Test User'
 };
 
@@ -13,8 +13,29 @@ const ldClient = LDClient.initialize('YOUR_CLIENT_SIDE_ID', context);
 ldClient.on('ready', () => {
   console.log("LaunchDarkly client is ready");
 
+  // Check the current state of the "dark-mode" feature flag
+  const isDarkModeEnabled = ldClient.variation('dark-mode', false);
+  console.log("Initial dark-mode flag status:", isDarkModeEnabled);
+  toggleDarkMode(isDarkModeEnabled);
+
+  // Listen for real-time flag changes
+  ldClient.on('change', (settings) => {
+    if (settings['dark-mode']) {
+      console.log("Dark mode change detected:", settings['dark-mode'].current);
+      toggleDarkMode(settings['dark-mode'].current);
+    }
+  });
 });
 // End LaunchDarkly code
+
+// Function to toggle Dark Mode
+function toggleDarkMode(isDarkMode) {
+  console.log("Toggling dark mode:", isDarkMode); // Log the toggle action
+  document.body.style.backgroundColor = isDarkMode ? '#333' : '#fff';
+  document.body.style.color = isDarkMode ? '#fff' : '#000';
+}
+
+
 
 // Select elements from the DOM
 const newTodoInput = document.getElementById('newTodo');
