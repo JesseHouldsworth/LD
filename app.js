@@ -1,21 +1,31 @@
-// Define a context with a "userType" attribute
+// Initialize LaunchDarkly with the user context
 const context = {
   kind: 'user',
-  key: 'user-12784',  // Unique identifier for the user
-  name: 'John Smith',
+  key: 'user-12345',  // Unique identifier for the user
+  name: 'Test User',  // User's name
   attributes: {
     role: 'developer',
     location: 'US',
-    userType: 'early-adopters'  // Identifies the user as an early adopter
+    userType: 'early-adopter'
   }
 };
 
 // Initialize LaunchDarkly with the context
-const ldClient = LDClient.initialize('YOUR_CLIENT_SIDE_ID', context);
+const ldClient = LDClient.initialize('67115935de207a084aa2c999', context);
 
 ldClient.on('ready', () => {
   const isDarkModeEnabled = ldClient.variation('dark-mode', false);
   toggleDarkMode(isDarkModeEnabled);
+
+  // Track button clicks when dark mode is enabled or disabled
+  const addTodoBtn = document.getElementById('addTodoBtn');
+
+  addTodoBtn.addEventListener('click', () => {
+    // Log the click event to LaunchDarkly
+    ldClient.track('todo-item-click', { darkMode: isDarkModeEnabled });
+
+    // Add your existing logic here for adding todos, etc.
+  });
 
   ldClient.on('change', (settings) => {
     if (settings['dark-mode']) {
@@ -23,7 +33,6 @@ ldClient.on('ready', () => {
     }
   });
 });
-
 
 // Function to toggle Dark Mode
 function toggleDarkMode(isDarkMode) {
