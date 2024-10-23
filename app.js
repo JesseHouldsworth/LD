@@ -1,17 +1,17 @@
 // Initialize LaunchDarkly with the user context
 const context = {
   kind: 'user',
-  key: '2user-157',  // Unique identifier for the user
+  key: '2userd-157',  // Unique identifier for the user
   name: 'Test User',  // User's name
   attributes: {
     role: 'developer',
     location: 'US',
-    userType: 'early-adopter'
+    userType: 'standard'
   }
 };
 
 // Initialize LaunchDarkly with the context
-const ldClient = LDClient.initialize('', context);
+const ldClient = LDClient.initialize('67115935de207a084aa2c999', context);
 
 ldClient.on('ready', () => {
   const isDarkModeEnabled = ldClient.variation('dark-mode', false);
