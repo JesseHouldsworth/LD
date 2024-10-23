@@ -1,13 +1,14 @@
-// Initialize LaunchDarkly with the user context
+const generateUserId = () => `user-${Math.floor(Math.random() * 1000000)}-${Date.now()}`;
+
 const context = {
-  kind: 'user',
-  key: 'hpud977899',  // Unique identifier for the user
-  name: 'Test User2',  // User's name
-  attributes: {
-    role: 'developer',
-    location: 'US',
-    userType: 'standard2'
-  }
+    kind: 'user',
+    key: generateUserId(),  // Unique user key generated on page load
+    name: 'Test User',
+    attributes: {
+        role: 'developer',
+        location: 'US',
+        userType: 'standard'
+    }
 };
 
 // Initialize LaunchDarkly with the context
