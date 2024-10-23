@@ -1,23 +1,24 @@
+// Define a context with a "userType" attribute
 const context = {
   kind: 'user',
-  key: 'test-user',  // Use a simple context key for testing
-  name: 'Test User'
+  key: 'user-12784',  // Unique identifier for the user
+  name: 'John Smith',
+  attributes: {
+    role: 'developer',
+    location: 'US',
+    userType: 'early-adopters'  // Identifies the user as an early adopter
+  }
 };
 
-const ldClient = LDClient.initialize('67115935de207a084aa2c999', context);
+// Initialize LaunchDarkly with the context
+const ldClient = LDClient.initialize('YOUR_CLIENT_SIDE_ID', context);
 
 ldClient.on('ready', () => {
-  console.log("LaunchDarkly client is ready");
-
-  // Check the current state of the "dark-mode" feature flag
   const isDarkModeEnabled = ldClient.variation('dark-mode', false);
-  console.log("Initial dark-mode flag status:", isDarkModeEnabled);
   toggleDarkMode(isDarkModeEnabled);
 
-  // Listen for real-time flag changes
   ldClient.on('change', (settings) => {
     if (settings['dark-mode']) {
-      console.log("Dark mode change detected:", settings['dark-mode'].current);
       toggleDarkMode(settings['dark-mode'].current);
     }
   });
