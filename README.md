@@ -8,7 +8,7 @@ Current Progress
 - Feature Flag (dark-mode): Controls light and dark mode.
 - LaunchDarkly SDK: Integrated to evaluate the feature flag based on user context.
 
-Next Steps (Part 2)
+Accompanying slides: https://docs.google.com/presentation/d/1ahEbRqmGRHFz-GzJjZwHL9woTQQ4cqNqrQXW7dtZ64A/edit#slide=id.g30e116459e0_2_1
 
 Installation
 - Clone the repo:
