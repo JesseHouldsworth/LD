@@ -1,7 +1,7 @@
 // Initialize LaunchDarkly with the user context
 const context = {
   kind: 'user',
-  key: '2us5erd-sd789',  // Unique identifier for the user
+  key: '2us5erdsd789',  // Unique identifier for the user
   name: 'Test User',  // User's name
   attributes: {
     role: 'developer',
