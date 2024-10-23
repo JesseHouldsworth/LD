@@ -1,15 +1,11 @@
-// Begin LaunchDarkly code
-// Define user attributes
 const context = {
   kind: 'user',
   key: 'test-user',  // Use a simple context key for testing
   name: 'Test User'
 };
 
-// Initialize LaunchDarkly client - REPLACE WITH CLIENT SIDE ID
-const ldClient = LDClient.initialize('YOUR_CLIENT_SIDE_ID', context);
+const ldClient = LDClient.initialize('67115935de207a084aa2c999', context);
 
-// Setup event listener - should result in success message sent to browser console
 ldClient.on('ready', () => {
   console.log("LaunchDarkly client is ready");
 
@@ -26,13 +22,24 @@ ldClient.on('ready', () => {
     }
   });
 });
-// End LaunchDarkly code
+
 
 // Function to toggle Dark Mode
 function toggleDarkMode(isDarkMode) {
-  console.log("Toggling dark mode:", isDarkMode); // Log the toggle action
+  // Toggle body background and text colors
   document.body.style.backgroundColor = isDarkMode ? '#333' : '#fff';
   document.body.style.color = isDarkMode ? '#fff' : '#000';
+
+  // Update input field text and background colors for dark mode
+  const inputField = document.getElementById('newTodo');
+  const todoContainer = document.querySelector('.container');
+
+  inputField.style.backgroundColor = isDarkMode ? '#555' : '#fff';
+  inputField.style.color = isDarkMode ? '#fff' : '#000';
+
+  // Update the container's background to contrast with the body
+  todoContainer.style.backgroundColor = isDarkMode ? '#444' : '#fff';
+  todoContainer.style.color = isDarkMode ? '#fff' : '#000';
 }
 
 
