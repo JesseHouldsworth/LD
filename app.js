@@ -11,7 +11,7 @@ const context = {
 };
 
 // Initialize LaunchDarkly with the context
-const ldClient = LDClient.initialize('67115935de207a084aa2c999', context);
+const ldClient = LDClient.initialize('', context);
 
 ldClient.on('ready', () => {
   const isDarkModeEnabled = ldClient.variation('dark-mode', false);
